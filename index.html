@@ -882,13 +882,21 @@
             phoneNumber: ''
         }
 
-        function numberBlurred() {
-            footer.style.display = block;
-        }
+        // function numberBlurred() {
+        //     footer.style.display = block;
+        // }
 
-        function numberFocussed() {
-            footer.style.display = none;
-        }
+        // function numberFocussed() {
+        //     footer.style.display = 'none';
+        // }
+        var initialScreenSize = window.innerHeight;
+        window.addEventListener("resize", function () {
+            if (window.innerHeight < initialScreenSize) {
+                document.getElementById("footer").hide();
+            } else {
+                document.getElementById("footer").show();
+            }
+        });
 
         function phoneMask() {
             numberInput.value.replace(/[^\d]/g, "");
