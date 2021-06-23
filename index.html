@@ -246,7 +246,7 @@
         } */
 
         #footer {
-            position: absolute;
+            position: fixed;
             bottom: 0;
             padding-bottom: 0.5em;
             width: 100%;
@@ -821,7 +821,8 @@
                             agree to
                             our <a href="#">Terms of Service.</a>
                         </p>
-                        <button onclick="numberButtonClick()" id="numberButton">Submit ▸</button>
+                        <button onblur="numberBlurred()" onfocus="numberFocussed()" onclick="numberButtonClick()"
+                            id="numberButton">Submit ▸</button>
                     </div>
                 </div>
 
@@ -869,7 +870,8 @@
         const forthStep = document.getElementById("forthStep");
         const fifthStep = document.getElementById("fifthStep");
         const sixthStep = document.getElementById("sixthStep");
-        const numberInput = document.getElementById("numberInput")
+        const numberInput = document.getElementById("numberInput");
+        const footer = document.getElementById("footer");
 
         let data = {
             zipcode: '',
@@ -878,6 +880,14 @@
             firstName: '',
             lastName: '',
             phoneNumber: ''
+        }
+
+        function numberBlurred() {
+            footer.style.display = block;
+        }
+
+        function numberFocussed() {
+            footer.style.display = none;
         }
 
         function phoneMask() {
