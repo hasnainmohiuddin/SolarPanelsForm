@@ -872,6 +872,17 @@
         const sixthStep = document.getElementById("sixthStep");
         const numberInput = document.getElementById("numberInput");
         const footer = document.getElementById("footer");
+        let height = window.innerHeight;
+        console.log("height", height);
+
+        window.onresize = function () {
+            if (height != window.height) {
+                footer.style.display = 'none';
+            } else if (height == wnidow.height) {
+                footer.style.display = 'flex';
+            }
+
+        }
 
         let data = {
             zipcode: '',
