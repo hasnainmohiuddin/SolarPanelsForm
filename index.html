@@ -247,9 +247,13 @@
 
         #footer {
             position: fixed;
-            bottom: 0;
             padding-bottom: 0.5em;
             width: 100%;
+        }
+
+        .fixed {
+            position: fixed;
+            bottom: 0;
         }
 
         #root,
@@ -616,7 +620,7 @@
                     </div>
                 </div>
             </div>
-            <div id="footer">
+            <div id="footer" class="fixed">
                 <img src="./logo.jpeg" alt="logo">
                 <!-- <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
                 <div id="footer__links">
@@ -652,7 +656,7 @@
                         <button onclick="zipcodeButtonClick()" id="zipCodeButton">Next</button>
                     </div>
                 </div>
-                <div id="footer">
+                <div id="footer" class="fixed">
                     <img src="./logo.jpeg" alt="logo">
                     <!-- <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
                     <div id="footer__links">
@@ -701,7 +705,7 @@
                         <button onclick="gotoEmail()" id="electricBillButton">Next</button>
                     </div>
                 </div>
-                <div id="footer">
+                <div id="footer" class="fixed">
                     <img src="./logo.jpeg" alt="logo">
                     <!-- <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
                     <div id="footer__links">
@@ -718,7 +722,7 @@
                 </div>
             </div>
         </div>
-        <div id="forthStep">
+        <div id="forthStep" class="fixed">
             <div id="rootStepFour" class="animate__animated animate__slideInUp">
                 <div id="root__contentStepFour">
                     <div id="root__stepNumberHeading">
@@ -737,7 +741,7 @@
                         <button onclick="emailButtonClick()" id="electricBillButton">Next</button>
                     </div>
                 </div>
-                <div id="footer">
+                <div id="footer" class="fixed">
                     <img src="./logo.jpeg" alt="logo">
                     <!-- <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
                     <div id="footer__links">
@@ -774,7 +778,7 @@
                         <button onclick="nameButtonClick()" id="nameButton">Next</button>
                     </div>
                 </div>
-                <div id="footer">
+                <div id="footer" class="fixed">
                     <img src="./logo.jpeg" alt="logo">
                     <!-- <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
                     <div id="footer__links">
@@ -826,7 +830,7 @@
                     </div>
                 </div>
 
-                <div id="footer">
+                <div id="footer" class="fixed">
                     <img src="./logo.jpeg" alt="logo" style="width: 100px;">
                     <!-- <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
                     <div id="footer__links">
@@ -877,9 +881,9 @@
 
         window.onresize = function () {
             if (height != window.height) {
-                footer.style.display = 'none';
+                footer.removeClass("fixed");
             } else if (height == wnidow.height) {
-                footer.style.display = 'flex';
+                footer.addClass("fixed");
             }
 
         }
