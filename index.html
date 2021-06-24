@@ -876,17 +876,6 @@
         const sixthStep = document.getElementById("sixthStep");
         const numberInput = document.getElementById("numberInput");
         const footer = document.getElementById("footer");
-        let height = window.innerHeight;
-        console.log("height", height);
-
-        window.onresize = function () {
-            if (height != window.height) {
-                footer.removeClass("fixed");
-            } else if (height == wnidow.height) {
-                footer.addClass("fixed");
-            }
-
-        }
 
         let data = {
             zipcode: '',
@@ -1000,6 +989,7 @@
         function zipCodeFocus() {
             bluePin.style.display = "block";
             whitePin.style.display = 'none';
+            footer.removeClass("fixed");
         }
 
         function emailFocus() {
@@ -1015,6 +1005,7 @@
         function zipCodeBlur() {
             bluePin.style.display = "none";
             whitePin.style.display = 'block';
+            footer.addClass("fixed");
         }
 
         function emailBlur() {
