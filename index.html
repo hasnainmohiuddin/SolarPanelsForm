@@ -827,7 +827,7 @@
                 </div>
 
                 <div id="footer">
-                    <img src="./logo.jpeg" alt="logo">
+                    <img src="./logo.jpeg" alt="logo" style="width: 100px;">
                     <!-- <p id="footer__copyright">©2021 Sunrun. All rights reserved.</p>
                     <div id="footer__links">
                         <p>
@@ -881,22 +881,6 @@
             lastName: '',
             phoneNumber: ''
         }
-
-        // function numberBlurred() {
-        //     footer.style.display = block;
-        // }
-
-        // function numberFocussed() {
-        //     footer.style.display = 'none';
-        // }
-        var initialScreenSize = window.innerHeight;
-        window.addEventListener("resize", function () {
-            if (window.innerHeight < initialScreenSize) {
-                document.getElementById("footer").hide();
-            } else {
-                document.getElementById("footer").show();
-            }
-        });
 
         function phoneMask() {
             numberInput.value.replace(/[^\d]/g, "");
